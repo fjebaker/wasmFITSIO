@@ -4,7 +4,8 @@
     "@babel/core": "^7.21.4"
   },
   "scripts": {
-    "dev": "webpack-dev-server --config wp.config.js --host localhost --port 8080 --open"
+    "dev": "webpack-dev-server --config wp.config.js --host localhost --port 8080 --open",
+    "dist": "webpack --config wp.config.js"
   },
   "dependencies": {
     "@wasmer/wasi": "^1.2.2",
