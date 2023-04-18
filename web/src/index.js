@@ -4,12 +4,13 @@ var input = document.querySelector('input[type=file]');
 var textarea = document.querySelector('#stdout');
 
 // singleton
-var wasi = undefined;
+var module = undefined;
 
 function readFile(event) {
     console.log("EXEC");
-    runwasm(wasi, new Uint8Array(event.target.result)).then(value => {
-        textarea.innerHTML = value;
+    runwasm(module, new Uint8Array(event.target.result))
+        .then(res => {
+        textarea.innerHTML = res.stdout;
     });
 }
 
@@ -21,8 +22,8 @@ function changeFile() {
 
 }
 
-setup().then(w => {
-    wasi = w;
+setup().then(m => {
+    module = m;
     input.addEventListener('change', changeFile);
 });
 
